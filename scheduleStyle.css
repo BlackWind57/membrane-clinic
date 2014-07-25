@@ -1,0 +1,138 @@
+@charset "utf-8";
+/* CSS Document */
+
+#schedule{
+	border:#000 solid 1px;
+	width:780px;
+	margin:0 auto;
+}
+
+table {
+ width: 760px;
+ border-collapse: collapse;
+}
+
+
+.scroll{
+	overflow: auto;
+	height:350px;
+	margin:0 auto;
+}
+
+#header div{
+	padding:1px 5px;
+	border:#000 1px solid;
+}
+
+td a:link, td a:visited {
+ text-decoration: none;
+}
+
+#year {
+ font-family: monospace;
+ font-size: 1.5em;
+ padding: 0;
+ margin: 0;
+}
+#month {
+ font-family: monospace;
+ font-size: 2em;
+ padding: 0;
+ margin: 0;
+}
+#days {
+ background-color: black;
+ border:#FF0;
+ color: white;
+ font-family: monospace;
+ text-align:center;
+}
+#selectedDay{
+ background-color:black;
+ border:#FF0;
+ color: red;
+ font-family: monospace;
+ text-align:center;	
+}
+#header #days1{
+ background-color: black;
+ border:#FF0;
+ color: white;
+ font-family: monospace;
+ text-align:center;
+ float:none;	
+}
+
+.date {
+ border-right: 1px solid black;
+ border-bottom: 1px solid black;
+ font-family: monospace;
+ text-decoration: none;
+ float: left;
+ width: 1.5em;
+ height: 1.5em;
+ background-color: white;
+ text-align: center;
+}
+
+.addevent {
+ display: block;
+ float: left;
+ width: 1em;
+ height: 1em;
+ text-align: center;
+ background-color: #666;
+ color: white;
+ font-weight: bold;
+ text-decoration: none;
+}
+
+.event {
+ clear: both;
+ padding-left: 1em;
+ padding-bottom: .75em;
+ display: block;
+}
+
+td {
+ width: 300px;
+ background-color: #ccc;
+ border: 1px solid white;
+ word-wrap:break-word;
+ word-break:break-all;
+ padding:0;
+ margin:0;
+ text-align:center;
+}
+
+.hour{
+	text-align:center;
+}
+
+.box{
+width: 25px;
+margin: 0 auto;
+height:25px;
+border:1px solid #000;
+background-color:#FFF;
+}
+
+.weekend {
+ background-color: #999;
+}
+
+.emptydate {
+ border-right: 1px solid #666;
+ border-bottom: 1px solid #666;
+ font-family: monospace;
+ text-decoration: none;
+ float: left;
+ width: 1.5em;
+ height: 1.5em;
+ background-color: #ccc;
+ text-align: center;
+}
+
+#today {
+ border: 2px solid black;
+}

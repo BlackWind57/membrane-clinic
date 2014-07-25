@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link href="loginStyles.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="hoverScripts.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="favicon.ico" />
+<title>Membrane | Home</title>
+</head>
+<body onload="MM_preloadImages('Images/home_hover.png','Images/about_hover.png','Images/doctor_hover.png','Images/faqs_hover.png')">
+
+<div id="wrapper">
+	<div id="header">
+		<div id="logo">
+			<a href="index.html">
+            <img src="Images\logo.png" id="logo_image" width="300px" height="100px" />
+            </a>
+		</div>
+		<div id="memberMenu">
+			<span id="memberMenu_content"> 
+				<p id="memberMenu_text">
+				<a class="registerLoginStyle" href="login.html">Login</a> | <a class="registerLoginStyle" href="register.html">Register </a>
+				</p>
+			</span>
+		</div>
+	</div> 
+	
+	<div id="slider">
+      <div id="register">
+            <h2>Registration</h2>
+                <hr />
+                
+                <form id="signupform" name="signupform" method="post" action="sign_up.php">
+                    <fieldset>
+                    <legend>Account Information</legend>
+                    <div>
+                    <table width="600">                        
+                        <tr>
+                        <td width="100"><label>Username</label></td>
+                        <td width="25">:</td>
+                        <td width="200"><input name="username" type="text" size="20" maxlength="15" onblur="validateUsername(this);" /><label id="errorUsername" class="errorLabel"></label></td>
+                        </tr>
+                        
+                        <tr>
+                        <td><label>Password</label></td>
+                        <td>:</td>
+                        <td><input name="password" type="password" size="20" maxlength="20" onblur="validatePassword(this);" /><label id="errorPassword" class="errorLabel"></label></td>
+                        </tr>
+                        
+                        <tr>
+                        <td><label>Confirm Password</label></td>
+                        <td>:</td>
+                        <td><input name="confpass" type="password" size="20" maxlength="20" onblur="validateSamePassword(signupform.password, this);" /><label id="errorConfirmPassword" class="errorLabel"></label></td>
+                        </tr>                        
+                    </table>
+                    </div>
+                    </fieldset>
+                    
+                    <fieldset>
+                    <legend>Personal Information</legend>
+                    <div>
+                    <table width="600">
+                        <tr>
+                        <td width="195"><label for="firstname">First Name</label></td>
+                        <td width="45">:</td>
+                        <td width="344"><input name="firstname" type="text" size="30" maxlength="20" onblur="validateFirstName(this);" /><label id="errorFirstName" class="errorLabel"></label></td>
+                        </tr>
+                        
+                        <tr>
+                        <td><label for="lastname">Last Name</label></td>
+                        <td>:</td>
+                        <td><input name="lastname" type="text" size="30" maxlength="20" onblur="validateLastName(this);"/><label id="errorLastName" class="errorLabel"></label></td>
+                        </tr>
+                        
+                        <tr>
+                        <td><label for="age">Age</label></td>
+                        <td>:</td>
+                        <td><input name="age" type="text" size="3" maxlength="3" onblur="validateAge(this);"/><label id="errorAge" class="errorLabel"></label></td>
+                        </tr>
+                        
+                        <tr>
+                        <td><label for="phone">Phone Number</label></td>
+                        <td>:</td>
+                        <td><input name="phone" type="text" size="20" maxlength="15" onblur="validatePhone(this);"/><label id="errorPhone" class="errorLabel"></label></td>
+                        </tr>
+                        
+                        <tr>
+                        <td><label for="email">Email Address</label></td>
+                        <td>:</td>
+                        <td><input name="email" type="text" size="50" maxlength="50" onblur="validateEmail(this);"/><label id="errorEmail" class="errorLabel"></label></td>
+                        </tr>                                                          
+                    </table>
+                    </div>
+                    </fieldset>
+                    <br />
+                    
+                    <div class="submit">
+                    <input name="submit" type="button" value="SUBMIT" onclick="validateForm(signupform)"/>
+                    <input name="reset" type="reset" value="RESET" />
+                    </div>
+                </form>
+        </div>
+      </div>
+	<div id="sidebar">
+	</div>
+	
+</div>
+</body>
+</html>

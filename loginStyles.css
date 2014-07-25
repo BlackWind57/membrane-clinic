@@ -1,0 +1,92 @@
+@charset "utf-8";
+/* CSS Document */
+
+body
+{
+	margin:0 0 0 0;
+	background-image:url(Images/background.png);
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+}
+
+#wrapper
+{
+	margin: 25px auto 0;
+	width:1060px;
+	position:relative;
+}
+
+#header
+{
+	width:1060px;
+	height:120px;
+	background-image:url(Images/header_bg.png);
+}
+
+#logo
+{
+	float:left;
+	width:310px;
+	height:120px;
+}
+
+#logo_image
+{
+	margin: 10px 10px 10px;
+}
+
+
+#memberMenu
+{
+	float:right;
+	width:240px;
+	height:120px;
+	position: relative;
+}
+
+#memberMenu_content
+{
+	position: absolute; 
+	bottom: 0; 
+	right: 0;
+	margin-right:10px;
+}
+
+#memberMenu_text
+{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:24px;
+	color:#F90;
+}
+
+#slider
+{
+	margin-top:60px;
+	width:795px;
+	height:400px;
+	background-image:url(Images/slider.png);
+	float:left; 
+	overflow:auto;
+}
+
+#login
+{
+	margin:50px 20px 10px;
+}
+
+#register
+{
+	margin:50px 20px 10px;
+}
+
+#sidebar
+{
+	margin-top:60px;
+	width:265px;
+	height:400px;
+	background-image:url(Images/sidebar.png);
+	float:left;
+	margin-left:-15px;
+}
+
