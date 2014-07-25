@@ -79,10 +79,58 @@ body
 	float:left; 
 }
 
-#slider_image
+#doctor1
 {
-	right:0;
-	margin:20px 0px 20px 20px;
+	width:795px;
+	height:150px;
+	margin:20px 20px 20px;
+}
+
+#doctorImg1
+{
+	width:150px;
+	height:150px;
+	float:left;
+}
+
+#doctorName1
+{
+	width:645px;
+	height:150px;
+	float:left;
+}
+
+#doctorName1 h1
+{
+	font-family:Cambria;
+	margin-left:20px;
+}
+
+#doctor2
+{
+	width:795px;
+	height:150px;
+	margin:20px 20px 20px;
+}
+
+#doctorImg2
+{
+	width:150px;
+	height:150px;
+	float:left;
+}
+
+#doctorName2
+{
+	width:645px;
+	height:150px;
+	float:left;
+}
+
+#doctorName2 h1
+{
+	font-family:Cambria;
+	margin-left:20px;
 }
 
 #sidebar

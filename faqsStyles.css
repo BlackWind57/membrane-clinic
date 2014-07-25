@@ -74,15 +74,28 @@ body
 #slider
 {
 	width:795px;
-	height:400px;
 	background-image:url(Images/slider.png);
+	background-size:795px 100%;
+	background-repeat:no-repeat;
 	float:left; 
 }
 
-#slider_image
+#slider h1
 {
-	right:0;
-	margin:20px 0px 20px 20px;
+	font-family:Cambria;
+	margin: 30px 20px 20px 20px;
+}
+
+#slider h2
+{
+	font-family:Cambria;
+	margin: 30px 20px 20px 20px;
+}
+
+#slider p
+{
+	font-family:Cambria;
+	margin: 30px 20px 20px 20px;
 }
 
 #sidebar
