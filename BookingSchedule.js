@@ -1,6 +1,7 @@
 // JavaScript Document
-
-
+var theMonths = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+var daysPerMonth = [];
+var datesPerWeek = [];
 var daysOfWeek = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 var todayDate = new Date();
 var todayDay = daysOfWeek[todayDate.getDay()];
@@ -8,6 +9,60 @@ var todayDay = daysOfWeek[todayDate.getDay()];
 function TodaysDay(day)
 {
 	return todayDay == day ? true:false;
+}
+// number of days in the month
+function getMonthLen(theYear, theMonth) 
+{
+    var oneDay = 1000 * 60 * 60 * 24;
+    var thisMonth = new Date(theYear, theMonth, 1);
+    var nextMonth = new Date(theYear, theMonth + 1, 1);
+    var len = Math.ceil((nextMonth.getTime() - thisMonth.getTime())/oneDay);
+    return len;
+}
+//Calculating days per month
+for(var i = 0; i < 12; i++)
+{
+	daysPerMonth.push(getMonthLen(todayDate.getFullYear(),i));
+}
+
+ReturnDate();
+function ReturnDate()
+{
+	var date = todayDate.getDate();
+	for(var i = 0; i < daysOfWeek.length;i++)
+	{
+		if(i == todayDate.getDay())
+		{
+			datesPerWeek.push(DateFormat(date,todayDate.getMonth()+1,todayDate.getFullYear()));
+		}
+		else
+		{
+			var relative = todayDate.getDay() - i;
+			var days = daysPerMonth[todayDate.getMonth()];
+			if(date - relative > days)
+			{
+				var overflowedDays = (days - date) + relative;
+				datesPerWeek.push(DateFormat(overflowedDays,todayDate.getMonth()+2,todayDate.getFullYear()));
+			}
+			else
+			{
+				datesPerWeek.push(DateFormat(date - relative,todayDate.getMonth()+1,todayDate.getFullYear())); 
+			}
+		}
+	}
+}
+function Return()
+{
+	var string;
+	for(var i in daysPerMonth)
+	{
+		string += daysPerMonth[i]+"<br />";
+	}
+	document.getElementById('test').innerHTML = DateFormat(01,10,2014);
+}
+function DateFormat(date,month,year)
+{
+	return date+"/"+month+"/"+year;
 }
 
 //Setting the hours
@@ -61,7 +116,7 @@ function createTableHeader()
 {
 	CalculateHour();
 	var firstRow = true;
-	var rowCount = 1;
+	var rowCount = 2;
 	var fieldCount = 8;
 	var firstColumn = true;
 	var tbl = "<div id = "+"schedule "+"><table>";
@@ -89,9 +144,24 @@ function createTableHeader()
 							tbl += "<td id="+"days"+">"+daysOfWeek[ci-1]+"</td>";
 						}
 					}
-					
 				}
+				else
+				{
+					if(firstColumn)
+					{
+						tbl += "<td id = "+"days"+"></td>";	
+						firstColumn = false;
+					}
+					else
+					{
+						tbl += "<td id="+"days"+">"+datesPerWeek[ci-1]+"</td>";
+					}
+				}
+				
 			}
+			firstRow = false;
+			firstColumn = true;
+			
 		tbl += "</tr>";
 	}
 	tbl += "</table>";
