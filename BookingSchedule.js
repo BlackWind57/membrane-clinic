@@ -6,9 +6,15 @@ var daysOfWeek = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","S
 var todayDate = new Date();
 var todayDay = daysOfWeek[todayDate.getDay()];
 
-function TodaysDay(day)
+function TodaysDay(fullDate)
 {
-	return todayDay == day ? true:false;
+	var curDate = todayDate.getDate();var curMonth = todayDate.getMonth() + 1; var curYear = todayDate.getFullYear();
+	var selectedDate = fullDate.split("/");
+	if(curDate == selectedDate[0] && curMonth == selectedDate[1] && curYear == selectedDate[2])
+	{
+		return true;
+	}
+	return false;
 }
 // number of days in the month
 function getMonthLen(theYear, theMonth) 
@@ -41,7 +47,7 @@ function ReturnDate()
 			var days = daysPerMonth[todayDate.getMonth()];
 			if(date - relative > days)
 			{
-				var overflowedDays = (days - date) + relative;
+				var overflowedDays = (date - relative) - days;
 				datesPerWeek.push(DateFormat(overflowedDays,todayDate.getMonth()+2,todayDate.getFullYear()));
 			}
 			else
@@ -51,15 +57,45 @@ function ReturnDate()
 		}
 	}
 }
+function nextWeek()
+{
+	for(var i in datesPerWeek)
+	{
+		var selectedDate = datesPerWeek[i].split("/");
+		if( parseInt(selectedDate[0]) + 7 > parseInt(daysPerMonth[selectedDate[1]-1]))
+		{
+			var overflowed = (parseInt(selectedDate[0]) + 7) - parseInt(daysPerMonth[selectedDate[1]-1]);
+			datesPerWeek[i] = DateFormat(overflowed, parseInt(selectedDate[1]) + 1, selectedDate[2]);
+		}
+		else
+		{
+			datesPerWeek[i] = DateFormat(parseInt(selectedDate[0]) + 7, selectedDate[1], selectedDate[2]);
+		}
+	}
+	createTable();
+}
+function lastWeek()
+{
+	for(var i in datesPerWeek)
+	{
+		var selectedDate = datesPerWeek[i].split("/");
+		if(parseInt(selectedDate[0]) - 7 < 1)
+		{
+			var relative = parseInt(selectedDate[0]) - 7;
+			datesPerWeek[i] = DateFormat(daysPerMonth[selectedDate[1]-2] + relative, parseInt(selectedDate[1] - 1), selectedDate[2]);
+		}
+		else
+		{
+			datesPerWeek[i] = DateFormat(parseInt(selectedDate[0] - 7), selectedDate[1], selectedDate[2]);
+		}
+	}
+	createTable();
+}
 function Return()
 {
-	var string;
-	for(var i in daysPerMonth)
-	{
-		string += daysPerMonth[i]+"<br />";
-	}
-	document.getElementById('test').innerHTML = DateFormat(01,10,2014);
+	alert(datesPerWeek);
 }
+
 function DateFormat(date,month,year)
 {
 	return date+"/"+month+"/"+year;
@@ -135,7 +171,7 @@ function createTableHeader()
 					}
 					else
 					{
-						if(TodaysDay(daysOfWeek[ci-1]))
+						if(TodaysDay(datesPerWeek[ci-1]))
 						{
 							tbl += "<td id="+"selectedDay"+">"+daysOfWeek[ci-1]+"</td>";
 						}

@@ -15,7 +15,7 @@ table {
 
 .scroll{
 	overflow: auto;
-	height:350px;
+	height:300px;
 	margin:0 auto;
 }
 
@@ -134,4 +134,16 @@ background-color:#FFF;
 
 #today {
  border: 2px solid black;
+}
+
+#navPanel{
+	margin:auto auto;
+	margin-top:10px;
+	display:block;
+	text-align:center;
+}
+#navPanel img{
+	width:40px;
+	height:20px;	
+	display:inline-block;
 }
