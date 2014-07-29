@@ -15,6 +15,10 @@ function signin(){
 				document.getElementById('password').value = "";
 			}
 			else{
+				//close the login popup box
+				$('#mask , .loginpopup').fadeOut(500 , function() {
+					$('#mask').remove();
+				});
 				document.getElementById('statusbox').innerHTML = 'Welcome, ' + response[0] + ' | <a href="#" onclick="signout()">LOGOUT</a>';
 				if(document.getElementsByClassName('remember')[0].checked){
 					var expireDate = new Date();

@@ -2,10 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <link href="generalStyle.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="js/jquery-1.11.0.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="hoverScripts.js"></script>
-<script type="text/javascript" src="js/SigninSignout.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Login</title>
 </head>
@@ -21,7 +18,7 @@
             </div>
             
             <div id="membership">
-            	<span><p id="statusbox"><a href="login.html">Login</a> | <a href="register.html">Register</a></p></span>
+            	<span><p><a href="login.html">Login</a> | <a href="register.html">Register</a></p></span>
             </div>
     	</div>
     	<div id="menu">
@@ -40,41 +37,34 @@
         	<div id="container">
             	<h2>Login</h2>
                 <hr /><br />
-            	<form name="form1" method="post" action="" class="signinform">
-                        <fieldset class="textbox">
+            	<form id="signupform" name="signupform" method="post" action="sign_up.php">
+                        <fieldset>
+                        <legend>Account Information</legend>
                         <div>
                         <table width="600">                        
                             <tr>
-                            <td width="150"><label class="username">Username</label></td>
+                            <td width="150"><label>Username</label></td>
                             <td width="38">:</td>
-                            <td width="434"><input type="text" id="username" name="username" placeholder="Username"> </td>
+                            <td width="434"><input name="username" type="text" size="20" maxlength="15" /> </td>
                             </tr>
                             
                             <tr>
-                            <td><label class="password">Password</label></td>
+                            <td><label>Password</label></td>
                             <td>:</td>
                             <td>
-                            <input type="password" id="password" name="password" placeholder="Password"></td>
-                            </tr>
-                            
-                            <tr>
-                            <td>
-                            <span><input type="checkbox" name="remember" value="yes" class="remember" />Remember Me!</span>
-							</td>
-                            <td>
-                            </td>
-                            <td>
-                            <label class="warningtxt" style="color:#F00; display:none;"><br />
-							 Invalid Username and/or Password</label>
-                             </td>
+                            <input name="password" type="password" size="20" maxlength="20" onblur="validatePassword(this);" />	
+                            <label id="errorPassword" class="errorLabel"></label></td>
                             </tr>                
                         </table>
                         </div>
-                        <button type="button" class="submitBtn" onclick= "signin()">Login</button>
                         </fieldset>
                         <br />
                         
-               		</form>
+                        <div class="submit">
+                        <input name="submit" type="button" value="SUBMIT" onclick="validateForm(signupform)"/>
+                        <input name="reset" type="reset" value="RESET" />
+                        </div>
+          		</form>
           		<br />
           		Not registered yet? <a href="register.html">Register</a> here
             </div>
