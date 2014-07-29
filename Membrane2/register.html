@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link href="generalStyle.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="hoverScripts.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Register</title>
+</head>
+
+<body>
+    <div id="wrapper">
+    	<div id="header">
+        	<div id="logo">
+            	<img src="images/logo.png" usemap="#Map" border="0" />
+            	<map name="Map" id="Map">
+              		<area shape="rect" coords="3,124,296,160" href="index.html" />
+            	</map>
+            </div>
+            
+            <div id="membership">
+            	<span><p><a href="login.html">Login</a> | <a href="register.html">Register</a></p></span>
+            </div>
+    	</div>
+    	<div id="menu">
+       	  	<a href="index.html"><img id="home" src="images/home.png" style="left:0;" name="_home" 
+        onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('_home','','images/home_hover.png',1)"/></a>
+            <a href="about.html"><img id="about" src="images/about.png" style="left:120px;" name="_about" 
+        onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('_about','','images/about_hover.png',1)"/></a>
+            <a href="doctor.html"><img id="doctor" src="images/doctor.png" style="left:240px"; name="_doctor" 
+        onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('_doctor','','images/doctor_hover.png',1)"/></a>
+            <a href="faqs.html"><img id="faqs" src="images/faqs.png" style="left:360px;" name="_faqs" 
+        onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('_faqs','','images/faqs_hover.png',1)"/></a>
+            <a href="appointment.html"><img id="appointment" src="images/appointment.png" style="left:480px;" name="_appointment" 
+        onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('_appointment','','Images/appointment_hover.png',1)"/></a>
+    	</div>
+        <div id="content">
+        	<div id="container">
+            	<h2>Registration</h2>
+                <hr />
+                
+                <form id="signupform" name="signupform" method="post" action="sign_up.php">
+                    <fieldset>
+                    <legend>Account Information</legend>
+                    <div>
+                    <table width="600">                        
+                        <tr>
+                        <td width="100"><label>Username</label></td>
+                        <td width="25">:</td>
+                        <td width="200"><input name="username" type="text" size="20" maxlength="15" onblur="validateUsername(this);" /><label id="errorUsername" class="errorLabel"></label></td>
+                        </tr>
+                        
+                        <tr>
+                        <td><label>Password</label></td>
+                        <td>:</td>
+                        <td><input name="password" type="password" size="20" maxlength="20" onblur="validatePassword(this);" /><label id="errorPassword" class="errorLabel"></label></td>
+                        </tr>
+                        
+                        <tr>
+                        <td><label>Confirm Password</label></td>
+                        <td>:</td>
+                        <td><input name="confpass" type="password" size="20" maxlength="20" onblur="validateSamePassword(signupform.password, this);" /><label id="errorConfirmPassword" class="errorLabel"></label></td>
+                        </tr>                        
+                    </table>
+                    </div>
+                    </fieldset>
+                    <br />
+                    <fieldset>
+                    <legend>Personal Information</legend>
+                    <div>
+                    <table width="600">
+                        <tr>
+                        <td width="195"><label for="firstname">First Name</label></td>
+                        <td width="45">:</td>
+                        <td width="344">
+                        	<input name="firstname" type="text" size="30" maxlength="20" onblur="validateFirstName(this);" />
+                        	<label id="errorFirstName" class="errorLabel"></label>
+                        </td>
+                        </tr>
+                        
+                        <tr>
+                        <td><label for="lastname">Last Name</label></td>
+                        <td>:</td>
+                        <td>
+                        	<input name="lastname" type="text" size="30" maxlength="20" onblur="validateLastName(this);"/>
+                        	<label id="errorLastName" class="errorLabel"></label>
+                        </td>
+                        </tr>
+                        
+                        <tr>
+                        <td><label for="age">Age</label></td>
+                        <td>:</td>
+                        <td>
+                        	<input name="age" type="text" size="3" maxlength="3" onblur="validateAge(this);"/>
+                        	<label id="errorAge" class="errorLabel"></label>
+                        </td>
+                        </tr>
+                        
+                        <tr>
+                        <td><label for="phone">Phone Number</label></td>
+                        <td>:</td>
+                        <td>
+                        	<input name="phone" type="text" size="20" maxlength="15" onblur="validatePhone(this);"/>
+                            <label id="errorPhone" class="errorLabel"></label>
+                        </td>
+                        </tr>
+                        
+                        <tr>
+                        <td><label for="email">Email Address</label></td>
+                        <td>:</td>
+                        <td>
+                        	<input name="email" type="text" size="50" maxlength="50" onblur="validateEmail(this);"/>
+                        	<label id="errorEmail" class="errorLabel"></label>
+                        </td>
+                        </tr>                                                          
+                    </table>
+                    </div>
+                    </fieldset>
+                    <br />
+                    
+                    <div class="submit">
+                    	<input name="submit" type="button" value="SUBMIT" onclick="validateForm(signupform)" />
+                    	<input name="reset" type="reset" value="RESET"/>
+                    </div>
+                </form>
+                <br/>
+                Already a member? <a href="login.html">Login</a> here
+            </div>
+        </div>
+        <div id="footer">
+        	<span>
+            	<p>
+                	<br />
+            		Address: 123 Sandy Street, Zilgerton, Cairnsville | Phone: 07 4774 1234 | Fax: 07-4774 4321 | E-mail: mc_contact@gmail.com 
+            	</p>
+            </span>
+        </div>
+	</div>
+</body>
+</html>

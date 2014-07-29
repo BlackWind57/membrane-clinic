@@ -1,0 +1,152 @@
+@charset "utf-8";
+/* CSS Document */
+
+body
+{
+	background-image:url(images/body_bg.png);
+	background-attachment:fixed;
+}
+
+#wrapper
+{
+	margin: 0 135px 0;
+}
+
+#header
+{
+	width:1080px;
+	height:180px;
+	background-image:url(images/header_bg.png);
+	margin:0 auto;
+}
+
+#logo
+{
+	width:300px;
+	height:180px;
+	float:left;
+}
+
+#membership
+{
+	float:right;
+	width:300px;
+	height:180px;
+	position: relative;
+}
+
+#membership span
+{
+	position: absolute; 
+	bottom: 0; 
+	right: 0;
+	margin-right:20px;
+}
+
+#membership p
+{
+	font-family:Gautami;
+	font-size:24px;
+	color:#F60;
+}
+
+#membership a
+{
+	color:#F60;
+	text-decoration:none;
+}
+
+#membership a:hover
+{
+	color:#F60;
+	text-decoration:underline;
+}
+
+#menu
+{
+	width:1080px;
+	height:60px;
+	background-image:url(images/menu_bg.png);
+	margin:0 auto;
+}
+
+#menu img
+{
+	height:57px;
+	float:left;
+}
+
+#content
+{
+	background-image:url(images/content_bg.png);
+	background-size:1080px 100%;
+	width:1080px;
+	margin:0 auto;
+}
+
+#doctorlist
+{
+	width:1080px;
+	height:240px;
+}
+
+#doctor_img
+{
+	margin:20px 20px 20px;
+	float:left;
+}
+
+#doctor_name
+{
+	margin-top:60px;
+	margin-bottom:80px;
+	float:left;
+}
+
+#container
+{
+	width:1040px;
+	margin:0px 20px 10px 20px;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+
+#content h1
+{
+	font-family:Cambria;
+}
+
+#content p
+{
+	font-family:Cambria;
+}
+
+#content h2
+{
+	font-family:Cambria;
+}
+
+#content a
+{
+	color:#000;
+}
+
+#footer
+{
+	background-image:url(images/header_bg.png);
+	margin-top:20px;
+	width:1080px;
+	height:60px;
+	margin:0 auto;
+}
+
+#footer span
+{
+}
+
+#footer p
+{
+	color:#FFF;
+	text-align:center;
+	
+}

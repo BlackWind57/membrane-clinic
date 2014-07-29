@@ -1,0 +1,128 @@
+@charset "utf-8";
+/* CSS Document */
+
+#schedule{
+	width:1000px;
+	margin:0 auto;
+	border:#000 solid 1px;
+}
+
+#tableHeader {
+ width: 980px;
+ margin:0 auto;
+ position:absolute;
+ border-collapse:collapse;
+ table-layout:fixed;
+}
+
+.scroll{
+	overflow: auto;
+	height:500px;
+	margin:0 auto;
+	padding-top:18px;
+}
+
+#bookingTable{
+	width:980px;
+}
+
+td a:link, td a:visited {
+ text-decoration: none;
+}
+
+
+#days {
+ background-color:black;
+ color: white;
+ font-family: monospace;
+ text-align:center;
+ border:solid black;
+}
+#selectedDay{
+ background-color:black;
+ border:#000 solid;
+ color: red;
+ font-family: monospace;
+ text-align:center;	
+}
+#header #days1{
+ background-color: black;
+ border:#FF0;
+ color: white;
+ font-family: monospace;
+ text-align:center;
+ float:none;	
+}
+
+.date {
+ border-right: 1px solid black;
+ border-bottom: 1px solid black;
+ font-family: monospace;
+ text-decoration: none;
+ float: left;
+ width: 1.5em;
+ height: 1.5em;
+ background-color: white;
+ text-align: center;
+}
+
+td {
+ width: 120px;
+ background-color: #ccc;
+ word-wrap:break-word;
+ word-break:break-all;
+ padding:0;
+ margin:0;
+ text-align:center;
+}
+
+tr:hover td{
+  background-color: #FFFAF0; color: #000;
+}
+
+.hour{
+	text-align:center;
+}
+
+.box{
+	width: 25px;
+	margin: 0 auto;
+	height:25px;
+	border:1px solid #000;
+	background-color:#FFF;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+div.box:hover{
+	background-color:#0F0;
+}
+
+.weekend {
+ background-color: #999;
+}
+
+.emptydate {
+ border-right: 1px solid #666;
+ border-bottom: 1px solid #666;
+ font-family: monospace;
+ text-decoration: none;
+ float: left;
+ width: 1.5em;
+ height: 1.5em;
+ background-color: #ccc;
+ text-align: center;
+}
+
+
+#navPanel{
+	margin:auto auto;
+	margin-top:10px;
+	display:block;
+	text-align:center;
+}
+#navPanel img{
+	width:40px;
+	height:20px;	
+	display:inline-block;
+}
