@@ -3,6 +3,8 @@
 <head>
 <link href="generalStyle.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="hoverScripts.js"></script>
+<script type="text/javascript" src="js/SignUp.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js" charset="utf-8"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Register</title>
 </head>
@@ -36,81 +38,66 @@
         <div id="content">
         	<div id="container">
             	<h2>Registration</h2>
-                <hr />
+                <hr /><br />
                 
                 <form id="signupform" name="signupform" method="post" action="sign_up.php">
                     <fieldset>
                     <legend>Account Information</legend>
                     <div>
-                    <table width="600">                        
+                    <table width="895">                        
                         <tr>
-                        <td width="100"><label>Username</label></td>
+                        <td width="175"><label>Username</label></td>
                         <td width="25">:</td>
-                        <td width="200"><input name="username" type="text" size="20" maxlength="15" onblur="validateUsername(this);" /><label id="errorUsername" class="errorLabel"></label></td>
+                        <td width="397"><input name="username" type="text" size="20" maxlength="15" onblur="validateUsername(this);" /><label id="errorUsername" class="errorLabel"></label></td>
                         </tr>
                         
                         <tr>
                         <td><label>Password</label></td>
                         <td>:</td>
-                        <td><input name="password" type="password" size="20" maxlength="20" onblur="validatePassword(this);" /><label id="errorPassword" class="errorLabel"></label></td>
+                        <td><input name="password" type="password" size="20" maxlength="20" onblur="validatePassword(this);" /><label id="errorPassword" class="errorLabel"></label></td></td>
                         </tr>
                         
                         <tr>
                         <td><label>Confirm Password</label></td>
                         <td>:</td>
-                        <td><input name="confpass" type="password" size="20" maxlength="20" onblur="validateSamePassword(signupform.password, this);" /><label id="errorConfirmPassword" class="errorLabel"></label></td>
+                        <td><input name="confpass" type="password" size="20" maxlength="20" onblur="validateSamePassword(signupform.password, this);" /><label id="errorConfirmPassword" class="errorLabel"></label></td></td>
                         </tr>                        
                     </table>
                     </div>
                     </fieldset>
-                    <br />
+                    
                     <fieldset>
                     <legend>Personal Information</legend>
                     <div>
-                    <table width="600">
+                    <table width="895">
                         <tr>
-                        <td width="195"><label for="firstname">First Name</label></td>
-                        <td width="45">:</td>
-                        <td width="344">
-                        	<input name="firstname" type="text" size="30" maxlength="20" onblur="validateFirstName(this);" />
-                        	<label id="errorFirstName" class="errorLabel"></label>
-                        </td>
+                        <td width="175"><label for="firstname">First Name</label></td>
+                        <td width="25">:</td>
+                        <td width="397"><input name="firstname" type="text" size="30" maxlength="20" onblur="validateFirstName(this);" /><label id="errorFirstName" class="errorLabel"></label></td></td>
                         </tr>
                         
                         <tr>
                         <td><label for="lastname">Last Name</label></td>
                         <td>:</td>
-                        <td>
-                        	<input name="lastname" type="text" size="30" maxlength="20" onblur="validateLastName(this);"/>
-                        	<label id="errorLastName" class="errorLabel"></label>
-                        </td>
+                        <td><input name="lastname" type="text" size="30" maxlength="20" onblur="validateLastName(this);"/><label id="errorLastName" class="errorLabel"></label></td></td>
                         </tr>
                         
                         <tr>
                         <td><label for="age">Age</label></td>
                         <td>:</td>
-                        <td>
-                        	<input name="age" type="text" size="3" maxlength="3" onblur="validateAge(this);"/>
-                        	<label id="errorAge" class="errorLabel"></label>
-                        </td>
+                        <td><input name="age" type="text" size="3" maxlength="3" onblur="validateAge(this);"/><label id="errorAge" class="errorLabel"></label></td></td>
                         </tr>
                         
                         <tr>
                         <td><label for="phone">Phone Number</label></td>
                         <td>:</td>
-                        <td>
-                        	<input name="phone" type="text" size="20" maxlength="15" onblur="validatePhone(this);"/>
-                            <label id="errorPhone" class="errorLabel"></label>
-                        </td>
+                        <td><input name="phone" type="text" size="20" maxlength="15" onblur="validatePhone(this);"/><label id="errorPhone" class="errorLabel"></label></td></td>
                         </tr>
                         
                         <tr>
                         <td><label for="email">Email Address</label></td>
                         <td>:</td>
-                        <td>
-                        	<input name="email" type="text" size="50" maxlength="50" onblur="validateEmail(this);"/>
-                        	<label id="errorEmail" class="errorLabel"></label>
-                        </td>
+                        <td><input name="email" type="text" size="50" maxlength="50" onblur="validateEmail(this);"/><label id="errorEmail" class="errorLabel"></label></td></td>
                         </tr>                                                          
                     </table>
                     </div>
@@ -118,8 +105,8 @@
                     <br />
                     
                     <div class="submit">
-                    	<input name="submit" type="button" value="SUBMIT" onclick="validateForm(signupform)" />
-                    	<input name="reset" type="reset" value="RESET"/>
+                    <input name="submit" type="button" value="SUBMIT" onclick="validateForm(signupform)"/>
+                    <input name="reset" type="reset" value="RESET" />
                     </div>
                 </form>
                 <br/>
