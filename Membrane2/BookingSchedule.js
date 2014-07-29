@@ -251,6 +251,22 @@ function createTable()
 	getValue();
 }
 
+//Creating Doctor Selection
+/*function createDropMenu()
+{
+	var menu = "<select name = select id = doctorSelect onchange ="+"onChange(this.form.select);"+"><option>Dr.Toefu Wao,M.D.</option><option>Dr.Hotler Rious,M.D.</option></select>";
+	document.getElementById("doctorSelection").innerHTML = menu;
+}*/
+
+//Doctor selection on change
+/*function onChange(dropdown)
+{
+	alert("");
+	var myindex  = dropdown.selectedIndex
+    var selValue = dropdown.options[myindex].value;
+	alert(selValue);
+}*/
+
 //String Function for String Format
 String.format = function() {
   var s = arguments[0];
@@ -296,7 +312,9 @@ function loaded(i,f)
 }
 
 loaded('schedule',createTable);
+loaded('doctorSelection',createDropMenu);
 
+//Getting the value of row and column of the table
 function getValue()
 {
 	$(document).ready(function()
@@ -305,7 +323,8 @@ function getValue()
 		{  
 			var regTime  = this.parentNode.cells[0];
 			var regDay = e.delegateTarget.rows[0].cells[this.cellIndex];
-			alert([$(regDay).text(),$(regTime).text()]);
+			var doctor = $('#doctorSelect');
+			alert([$(regDay).text(),$(regTime).text(),$(doctor).val()]);
 		})
 	});	
 }

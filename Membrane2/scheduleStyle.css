@@ -7,12 +7,24 @@
 	border:#000 solid 1px;
 }
 
+#doctorSelection{
+	margin:0 auto;
+	text-align:center;
+}
+
+#doctorSelect{
+	margin-top:20px;
+	margin-bottom:20px;
+	font-weight:bold;
+	font-size:18px;	
+}
+
 #tableHeader {
- width: 980px;
- margin:0 auto;
- position:absolute;
- border-collapse:collapse;
- table-layout:fixed;
+	 width: 980px;
+	 margin:0 auto;
+	 position:absolute;
+	 border-collapse:collapse;
+	 table-layout:fixed;
 }
 
 .scroll{
@@ -32,52 +44,52 @@ td a:link, td a:visited {
 
 
 #days {
- background-color:black;
- color: white;
- font-family: monospace;
- text-align:center;
- border:solid black;
+	 background-color:black;
+	 color: white;
+	 font-family: monospace;
+	 text-align:center;
+	 border:solid black;
 }
 #selectedDay{
- background-color:black;
- border:#000 solid;
- color: red;
- font-family: monospace;
- text-align:center;	
+	 background-color:black;
+	 border:#000 solid;
+	 color: red;
+	 font-family: monospace;
+	 text-align:center;	
 }
 #header #days1{
- background-color: black;
- border:#FF0;
- color: white;
- font-family: monospace;
- text-align:center;
- float:none;	
+	 background-color: black;
+	 border:#FF0;
+	 color: white;
+	 font-family: monospace;
+	 text-align:center;
+	 float:none;	
 }
 
 .date {
- border-right: 1px solid black;
- border-bottom: 1px solid black;
- font-family: monospace;
- text-decoration: none;
- float: left;
- width: 1.5em;
- height: 1.5em;
- background-color: white;
- text-align: center;
+	 border-right: 1px solid black;
+	 border-bottom: 1px solid black;
+	 font-family: monospace;
+	 text-decoration: none;
+	 float: left;
+	 width: 1.5em;
+	 height: 1.5em;
+	 background-color: white;
+	 text-align: center;
 }
 
 td {
- width: 120px;
- background-color: #ccc;
- word-wrap:break-word;
- word-break:break-all;
- padding:0;
- margin:0;
- text-align:center;
+	 width: 120px;
+	 background-color:#f8f8f8;
+	 word-wrap:break-word;
+	 word-break:break-all;
+	 padding:0;
+	 margin:0;
+	 text-align:center;
 }
 
 tr:hover td{
-  background-color: #FFFAF0; color: #000;
+  	background-color:#fff9b7; color: #000;
 }
 
 .hour{
@@ -95,7 +107,7 @@ tr:hover td{
 }
 
 div.box:hover{
-	background-color:#0F0;
+	background-color:#ff9c00;
 }
 
 .weekend {
@@ -103,15 +115,15 @@ div.box:hover{
 }
 
 .emptydate {
- border-right: 1px solid #666;
- border-bottom: 1px solid #666;
- font-family: monospace;
- text-decoration: none;
- float: left;
- width: 1.5em;
- height: 1.5em;
- background-color: #ccc;
- text-align: center;
+	 border-right: 1px solid #666;
+	 border-bottom: 1px solid #666;
+	 font-family: monospace;
+	 text-decoration: none;
+	 float: left;
+	 width: 1.5em;
+	 height: 1.5em;
+	 background-color: #ccc;
+	 text-align: center;
 }
 
 
