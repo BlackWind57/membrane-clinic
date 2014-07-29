@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link href="adminLoginStyle.css" rel="stylesheet" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Admin Login</title>
+</head>
+
+<body>
+	<div id="wrapper">
+    	<div id="logo">
+        	<img src="images/login_logo.png" height="37" width="300"/>
+        </div>
+        <div id="login">
+            	<form id="signupform" name="signupform" method="post" action="sign_up.php">
+                        <div>
+                        <table width="600">                        
+                            <tr>
+                            <td width="150"><label>Username</label></td>
+                            <td width="38">:</td>
+                            <td width="434"><input name="username" type="text" size="20" maxlength="15" /> </td>
+                            </tr>
+                            
+                            <tr>
+                            <td><label>Password</label></td>
+                            <td>:</td>
+                            <td>
+                            <input name="password" type="password" size="20" maxlength="20" onblur="validatePassword(this);" />	
+                            <label id="errorPassword" class="errorLabel"></label></td>
+                            </tr>                
+                        </table>
+                        </div>
+                        <br />
+                        
+                        <div class="submit">
+                        <input name="submit" type="button" value="SUBMIT" onclick="validateForm(signupform)"/>
+                        <input name="reset" type="reset" value="RESET" />
+                        </div>
+          		</form>
+        </div>
+    </div>
+</body>
+</html>
