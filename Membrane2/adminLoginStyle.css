@@ -1,0 +1,42 @@
+@charset "utf-8";
+/* CSS Document */
+
+body
+{
+	background-image:url(images/body_bg.png);
+	background-attachment:fixed;
+}
+
+#wrapper
+{
+	margin: 150px 450px 0;
+	width:400px;
+	height:100%;
+}
+
+#logo
+{
+	width:400px;
+	height:74px;
+}
+
+#logo img
+{
+	margin-left:50px;
+	margin-top:30px;
+}
+
+#login
+{
+	width:400px;
+	margin-top:10px;
+	padding-top:10px;
+	height:100%;
+	background-image:url(images/content_bg.png);	
+}
+
+#signupform
+{
+	margin-left:10px;
+	margin-bottom:10px;
+}

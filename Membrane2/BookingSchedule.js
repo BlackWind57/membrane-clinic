@@ -50,6 +50,11 @@ function ReturnDate()
 				var overflowedDays = (date - relative) - days;
 				datesPerWeek.push(DateFormat(overflowedDays,todayDate.getMonth()+2,todayDate.getFullYear()));
 			}
+			else if (date - relative <= 0)
+			{
+				var prevMonth = todayDate.getMonth();
+				datesPerWeek.push(DateFormat(daysPerMonth[prevMonth] + (date - relative), todayDate.getMonth() + 1,todayDate.getFullYear()));
+			}
 			else
 			{
 				datesPerWeek.push(DateFormat(date - relative,todayDate.getMonth()+1,todayDate.getFullYear())); 
