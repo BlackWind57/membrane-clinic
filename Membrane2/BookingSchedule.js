@@ -330,6 +330,7 @@ function getValue()
 			var regDay = e.delegateTarget.rows[0].cells[this.cellIndex];
 			var doctor = $('#doctorSelect');
 			alert([$(regDay).text(),$(regTime).text(),$(doctor).val()]);
+			$.post('appointmentsubmit.php', { registDay: $(regDay).text() , registTime: $(regTime).text(), registDoctor: $(doctor).val() }, function(data) {alert( data );})
 		})
 	});	
 }
