@@ -5,7 +5,9 @@ var datesPerWeek = [];
 var daysOfWeek = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 var todayDate = new Date();
 var todayDay = daysOfWeek[todayDate.getDay()];
+var valueFromDb = new Array();
 
+//Checking whether the day is today
 function TodaysDay(fullDate)
 {
 	var curDate = todayDate.getDate();var curMonth = todayDate.getMonth() + 1; var curYear = todayDate.getFullYear();
@@ -32,6 +34,7 @@ for(var i = 0; i < 12; i++)
 }
 
 ReturnDate();
+//Calculating the dates in one week
 function ReturnDate()
 {
 	var date = todayDate.getDate();
@@ -50,11 +53,6 @@ function ReturnDate()
 				var overflowedDays = (date - relative) - days;
 				datesPerWeek.push(DateFormat(overflowedDays,todayDate.getMonth()+2,todayDate.getFullYear()));
 			}
-			else if (date - relative <= 0)
-			{
-				var prevMonth = todayDate.getMonth();
-				datesPerWeek.push(DateFormat(daysPerMonth[prevMonth] + (date - relative), todayDate.getMonth() + 1,todayDate.getFullYear()));
-			}
 			else
 			{
 				datesPerWeek.push(DateFormat(date - relative,todayDate.getMonth()+1,todayDate.getFullYear())); 
@@ -62,6 +60,7 @@ function ReturnDate()
 		}
 	}
 }
+//Calculating the dates for next week
 function nextWeek()
 {
 	for(var i in datesPerWeek)
@@ -79,6 +78,7 @@ function nextWeek()
 	}
 	createTable();
 }
+//Calculating the dates for last week
 function lastWeek()
 {
 	for(var i in datesPerWeek)
@@ -96,11 +96,7 @@ function lastWeek()
 	}
 	createTable();
 }
-function Return()
-{
-	alert(datesPerWeek);
-}
-
+//The standard format of date
 function DateFormat(date,month,year)
 {
 	return date+"/"+month+"/"+year;
@@ -150,6 +146,16 @@ function ConvertToRangesOfHours()
 		var string = String.format(colOfTime[i]+"-"+colOfTime[i+1]);
 		rangeOfTime.push(string);
 	}
+}
+
+//String Function for String Format
+String.format = function() {
+  var s = arguments[0];
+  for (var i = 0; i < arguments.length - 1; i++) {       
+	  var reg = new RegExp("\\{" + i + "\\}", "gm");             
+	  s = s.replace(reg, arguments[i + 1]);
+  }
+  return s;
 }
 
 //Creating table header
@@ -237,12 +243,12 @@ function createTable()
 			}
 			else if(firstColumn)
 			{
-				tbl += "<td style = "+"font-weight:bold"+">"+rangeOfTime[parseInt(ci)+parseInt(ri)]+"</td>";
+				tbl += "<td class ="+"time"+" style = "+"font-weight:bold"+">"+rangeOfTime[parseInt(ci)+parseInt(ri)]+"</td>";
 				firstColumn = false;
 			}
 			else
 			{
-				tbl += "<td><div class = "+"box"+" onclick = "+"BookARoom(this)"+" /></td>";
+				tbl += "<td class ="+"check"+"><div class = "+"box"+" onclick = "+"BookARoom(this)"+" /></td>";
 				if(ci == 7)
 				{
 					firstColumn = true;	
@@ -253,54 +259,7 @@ function createTable()
 	}
 	tbl += "</table></div></div>";
 	document.getElementById("schedule").innerHTML = tbl;
-	getValue();
-}
-
-//Creating Doctor Selection
-/*function createDropMenu()
-{
-	var menu = "<select name = select id = doctorSelect onchange ="+"onChange(this.form.select);"+"><option>Dr.Toefu Wao,M.D.</option><option>Dr.Hotler Rious,M.D.</option></select>";
-	document.getElementById("doctorSelection").innerHTML = menu;
-}*/
-
-//Doctor selection on change
-/*function onChange(dropdown)
-{
-	alert("");
-	var myindex  = dropdown.selectedIndex
-    var selValue = dropdown.options[myindex].value;
-	alert(selValue);
-}*/
-
-//String Function for String Format
-String.format = function() {
-  var s = arguments[0];
-  for (var i = 0; i < arguments.length - 1; i++) {       
-	  var reg = new RegExp("\\{" + i + "\\}", "gm");             
-	  s = s.replace(reg, arguments[i + 1]);
-  }
-  return s;
-}
-
-//Changing the color of boxes if occupied
-function BookARoom(divObj)
-{
-	if(divObj.style.backgroundColor == '')
-	{
-		if (confirm("Are you sure you want to book this room ?") == true) 
-		{
-        	//Book a room
-			divObj.style.backgroundColor = 'red';
-    	} 
-		else 
-		{
-        	
-		}
-	}
-	else
-	{
-		alert("Sorry, room is already booked :( ");
-	}
+	FeaturesOfTable();
 }
 
 // permission is granted to use this javascript provided that the below code is not altered
@@ -319,8 +278,21 @@ function loaded(i,f)
 loaded('schedule',createTable);
 loaded('doctorSelection',createDropMenu);
 
-//Getting the value of row and column of the table
-function getValue()
+
+//Changing the color of boxes if occupied
+function BookARoom(divObj)
+{
+	if(divObj.style.backgroundColor == '')
+	{
+		if (confirm("Are you sure you want to book this room ?") == true) 
+		{
+        	//Book a room
+			divObj.style.backgroundColor = 'red';
+    	} 
+	}
+}
+
+function FeaturesOfTable()
 {
 	$(document).ready(function()
 	{
@@ -330,10 +302,60 @@ function getValue()
 			var regDay = e.delegateTarget.rows[0].cells[this.cellIndex];
 			var doctor = $('#doctorSelect');
 			alert([$(regDay).text(),$(regTime).text(),$(doctor).val()]);
+			if(confirm("Are you sure you want to book this room ?") == true)
+			{
+				
+				$.post('appointmentsubmit.php', { registDay: $(regDay).text() , registTime: $(regTime).text(), registDoctor: $(doctor).val() }, function(data) {alert( data );})
+			}
 		})
+		
+		$('#bookingTable').ready(function(e) {
+			$.ajax({
+				type:"GET",
+				url:"RetrievingDatabase.php",
+				dataType:"json",
+				success: function(response)
+				{
+					valueFromDb = response.slice();
+					//alert('retrieved from database');
+					var rowCount = 0;
+					$('#bookingTable tr td').each(function() 
+					{
+						if(rowCount > 7)
+						{
+							rowCount = 0;
+						}
+						var regTime  = $(this).closest('tr').children(':first');	
+						//alert($(regTime).text());
+						var regDay = $(this).closest('tr').parent().children(':first').children('td:eq('+rowCount+')');
+						rowCount++;
+						
+						var regTime  = this.parentNode.cells[0];
+						//Comparing($(regTime).text(),$(regDay).text(),$(this));
+						
+						for(var i = 0; i < valueFromDb.length; i++)
+						{
+							var date = valueFromDb[i].split('|')[0];
+							var time = valueFromDb[i].split('|')[1];
+							//alert(date+' '+time+' db');
+							//alert($(regDay).text()+' '+$(regTime).text());
+							if(date === $(regDay).text() && time === $(regTime).text())
+							{
+								//alert('match');
+								//successCount++;
+								$(this).find('div').css('backgroundColor','red');
+							}
+							else
+							{
+								//alert('not matched');
+							}
+						}
+            		});
+				}
+			});
+        });
 	});	
 }
-
 
 
 
