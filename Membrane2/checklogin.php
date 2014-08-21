@@ -18,7 +18,10 @@ $memberUsername = stripslashes($memberUsername);
 $memberPassword = stripslashes($memberPassword);
 $memberUsername = mysql_real_escape_string($memberUsername);
 $memberPassword = mysql_real_escape_string($memberPassword);
-$md5pass = md5($memberPassword);
+
+$md5pass = password_hash("$memberPassword", PASSWORD_DEFAULT);
+
+
 $sqlquery = "SELECT * FROM `user` WHERE `username` = '$memberUsername' AND `password` = '$md5pass'";
 
 $result = mysql_query($sqlquery);
@@ -32,6 +35,6 @@ if($count == 1){
 	echo json_encode(array_values(array($memberUsername, $md5pass)));
 }
 else{
-	echo json_encode("empty");	
+	echo json_encode('');	
 }
 ?>

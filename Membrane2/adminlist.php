@@ -4,7 +4,7 @@
 <link href="adminStyle.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="hoverScripts.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>User List</title>
+<title>Admin List</title>
 </head>
 
 <body>
@@ -24,43 +24,32 @@
     	<div id="sidebar">
         	<h1>Menu</h1>
             <p>
-            	<a href="userlist.html">User list</a> <br />
-                <a href="appointmentlist.html">Appointment list</a> <br />
-                <a href="adminlist.html">Admin list</a>
+            	<a href="userlist.php">User list</a> <br />
+                <a href="appointmentlist.php">Appointment list</a> <br />
+                <a href="adminlist.php">Admin list</a>
             </p>
         </div>
         <div id="content">
-        	<h1>User List</h1>
-            <hr/><br />
-                <?
-                    $con=mysqli_connect("localhost","","","appointment");
-                    // Check connection
+       			<?php
+                    $con=mysqli_connect("localhost", "root", "","appointment");
+                    // Check connection 
                     if (mysqli_connect_errno()) {
                       echo "Failed to connect to Database: " . mysqli_connect_error();
                     }
                     
-                    $result = mysqli_query($con,SELECT * FROM `user`);
-                    
-                    echo "<table border='1'>
-                    <tr>
-                    <th>User ID</th>
-                    <th>User Name</th>
-                    <th>First name</th>
-                    <th>Last name</th>
-                    <th>age</th>
-                    <th>Phone Number</th>
-                    <th>email</th>                    
+                    $result = mysqli_query($con,"SELECT * FROM admin");
+                   
+                   echo "<table border='2' align='center'>
+					<tr>
+                    <th>admin ID</th>
+                    <th>admin name</th>              
                     </tr>";
                     
-                    while($row = mysqli_fetch_array($result)) {
+                    while($row = mysqli_fetch_array($result))
+					{
                       echo "<tr>";
-                      echo "<td>" . $row['userId'] . "</td>";
-                      echo "<td>" . $row['username'] . "</td>";
-                      echo "<td>" . $row['firstName'] . "</td>";
-                      echo "<td>" . $row['lastName'] . "</td>";
-                      echo "<td>" . $row['age'] . "</td>";
-                      echo "<td>" . $row['phoneNum'] . "</td>";                     
-                      echo "<td>" . $row['email'] . "</td>";
+                      echo "<td>" . $row['adminId'] ."</td>";
+                      echo "<td>" . $row['adminame'] ."</td>";
                       echo "</tr>";
                     }
                     
@@ -68,11 +57,20 @@
                     
                     mysqli_close($con);
     			?>
+               
+             	<form action="registerAdmin.html">
+    				<input type="submit" value="register Admin">
+				</form>
+                <form name="input" action="deleteAdmin.php" method="get">
+                Username: <input type="number" name="idUserDel">
+            	<input type="submit" value="Delete User">
+            	</form> 
+        	
         </div>
         <div id="footer">
         	<span>
             	<p>
-                
+                	
             		Address: 123 Sandy Street, Zilgerton, Cairnsville | Phone: 07 4774 1234 | Fax: 07-4774 4321 | E-mail: mc_contact@gmail.com 
             	</p>
             </span>
