@@ -31,13 +31,13 @@
         </div>
         <div id="content">
        			<?php
-                    $con=mysqli_connect("localhost", "root", "","appointment");
+                    $con=mysql_connect("localhost", "root", "","appointment");
                     // Check connection 
                     if (mysqli_connect_errno()) {
                       echo "Failed to connect to Database: " . mysqli_connect_error();
                     }
                     
-                    $result = mysqli_query($con,"SELECT * FROM admin");
+                    $result = mysql_query($con,"SELECT * FROM admin");
                    
                    echo "<table border='2' align='center'>
 					<tr>

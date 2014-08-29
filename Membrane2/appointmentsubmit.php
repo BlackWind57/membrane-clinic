@@ -16,7 +16,7 @@
 	if ($result && mysql_num_rows($result) > 0)
 	
 		{
-			echo json_encode("room already booked"); 
+			echo json_encode("The room have been booked :("); 
 		}
 	else
 		{

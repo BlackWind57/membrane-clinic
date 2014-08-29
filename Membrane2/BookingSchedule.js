@@ -5,7 +5,6 @@ var datesPerWeek = [];
 var daysOfWeek = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 var todayDate = new Date();
 var todayDay = daysOfWeek[todayDate.getDay()];
-var valueFromDb = new Array();
 
 //Checking whether the day is today
 function TodaysDay(fullDate)
@@ -248,7 +247,9 @@ function createTable()
 			}
 			else
 			{
-				tbl += "<td class ="+"check"+"><div class = "+"box"+" onclick = "+"BookARoom(this)"+" /></td>";
+
+				if(ri == 12 || ri == 13){tbl += "<td class ="+"check"+"><div class = "+"break"+" /></td>";}
+				else{tbl += "<td class ="+"check"+"><div class = "+"box"+" /></td>";}
 				if(ci == 7)
 				{
 					firstColumn = true;	
@@ -259,7 +260,8 @@ function createTable()
 	}
 	tbl += "</table></div></div>";
 	document.getElementById("schedule").innerHTML = tbl;
-	FeaturesOfTable();
+	onTableClick();
+	RetrieveDb();
 }
 
 // permission is granted to use this javascript provided that the below code is not altered
@@ -278,86 +280,92 @@ function loaded(i,f)
 loaded('schedule',createTable);
 loaded('doctorSelection',createDropMenu);
 
+var valueFromDb = new Array();
 
-//Changing the color of boxes if occupied
-function BookARoom(divObj)
+function onTableClick()
 {
-	if(divObj.style.backgroundColor == '')
+	$('#bookingTable').on('click', 'td', function(e) 
 	{
-		if (confirm("Are you sure you want to book this room ?") == true) 
+		if($(this).find('div').hasClass('box'))
 		{
-        	//Book a room
-			divObj.style.backgroundColor = 'red';
-    	} 
-	}
-}
-
-function FeaturesOfTable()
-{
-	$(document).ready(function()
-	{
-		$('#bookingTable').on('click', 'td', function(e) 
-		{  
 			var regTime  = this.parentNode.cells[0];
 			var regDay = e.delegateTarget.rows[0].cells[this.cellIndex];
 			var doctor = $('#doctorSelect');
-			alert([$(regDay).text(),$(regTime).text(),$(doctor).val()]);
-			if(confirm("Are you sure you want to book this room ?") == true)
+			var name = $('#name').val();
+			var phone = $('#phone').val();
+			var age = $('#age').val();
+			alert($(regDay).text()+' '+$(regTime).text()+' '+$(doctor).val()+' '+name+' '+phone+' '+age);
+			if(name.value && phone.value && age.value)
 			{
-				
-				$.post('appointmentsubmit.php', { registDay: $(regDay).text() , registTime: $(regTime).text(), registDoctor: $(doctor).val() }, function(data) {alert( data );})
-			}
-		})
-		
-		$('#bookingTable').ready(function(e) {
-			$.ajax({
-				type:"GET",
-				url:"RetrievingDatabase.php",
-				dataType:"json",
-				success: function(response)
+				if(confirm("Are you sure you want to book this room ?") == true)
 				{
-					valueFromDb = response.slice();
-					//alert('retrieved from database');
-					var rowCount = 0;
-					$('#bookingTable tr td').each(function() 
-					{
-						if(rowCount > 7)
-						{
-							rowCount = 0;
-						}
-						var regTime  = $(this).closest('tr').children(':first');	
-						//alert($(regTime).text());
-						var regDay = $(this).closest('tr').parent().children(':first').children('td:eq('+rowCount+')');
-						rowCount++;
-						
-						var regTime  = this.parentNode.cells[0];
-						//Comparing($(regTime).text(),$(regDay).text(),$(this));
-						
-						for(var i = 0; i < valueFromDb.length; i++)
-						{
-							var date = valueFromDb[i].split('|')[0];
-							var time = valueFromDb[i].split('|')[1];
-							//alert(date+' '+time+' db');
-							//alert($(regDay).text()+' '+$(regTime).text());
-							if(date === $(regDay).text() && time === $(regTime).text())
-							{
-								//alert('match');
-								//successCount++;
-								$(this).find('div').css('backgroundColor','red');
-							}
-							else
-							{
-								//alert('not matched');
-							}
-						}
-            		});
+					$(this).find('div').css('background-color','red');
+					$.post('appointmentsubmit.php', { registDay: $(regDay).text() , 
+					registTime: $(regTime).text(), registDoctor: $(doctor).val() }, 
+					function(data) {alert( data );})
 				}
-			});
-        });
-	});	
+			}
+			else
+			{
+				alert("You need to fill in the name, age, and phone textbox");
+			}
+		}
+	});
 }
 
+function RetrieveDb()
+{	
+	$('body').ready(function(e) {
+		$.ajax({
+			type:"GET",
+			url:"RetrievingDatabase.php",
+			dataType:"json",
+			success: function(response)
+			{
+				valueFromDb = response.slice();
+				alert('retrieved from database');
+				ConvertToTable();
+			}
+		});
+	});
+}
 
+function ConvertToTable()
+{
+	var rowCount = 0;
+	$('#bookingTable tr td').each(function() 
+	{
+		if(rowCount > 7)
+		{
+			rowCount = 0;
+		}
+		var regTime  = $(this).closest('tr').children(':first');
+		var regDay = $(this).closest('tr').parent().children(':first').children('td:eq('+rowCount+')');
+		rowCount++;
+		for(var i = 0; i < valueFromDb.length; i++)
+		{
+			var date = valueFromDb[i].split('|')[0];
+			var time = valueFromDb[i].split('|')[1];
+			var doctor = valueFromDb[i].split('|')[3];
+			if(date == $(regDay).text() && time == $(regTime).text() && doctor == $('#doctorSelect').val())
+			{
+				$(this).find('div').css('backgroundColor','rgb(255,0,0)');
+			}
+		}
+	});
+}
 
+function onChange()
+{
+	clearTable();
+	RetrieveDb();
+}
 
+function clearTable()
+{
+	$('#bookingTable tr td').each(function()
+	{
+		$(this).find('div').css('backgroundColor','');
+	});
+}
  
