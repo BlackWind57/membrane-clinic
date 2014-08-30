@@ -54,7 +54,7 @@ sec_session_start();
                 </div>
             	
                 <div id="doctorSelection">
-                    <select name = select id = doctorSelect onchange ="onChange(this.form.select);">
+                    <select name = select id = doctorSelect onchange ="onChange()">
                         <option>Dr.Toefu Wao,M.D.</option>
                         <option>Dr.Hotler Rious,M.D.</option>
                     </select>
