@@ -295,7 +295,7 @@ function onTableClick()
 			var phone = $('#phone').val();
 			var age = $('#age').val();
 			alert($(regDay).text()+' '+$(regTime).text()+' '+$(doctor).val()+' '+name+' '+phone+' '+age);
-			if(name.value && phone.value && age.value)
+			if($.trim(name)!=""&&$.trim(phone)!=""&&$.trim(age)!="")
 			{
 				if(confirm("Are you sure you want to book this room ?") == true)
 				{

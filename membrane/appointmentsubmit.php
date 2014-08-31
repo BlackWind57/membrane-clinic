@@ -13,7 +13,7 @@
 	$doctor = $_REQUEST['registDoctor'];
 	$pName = $_REQUEST['patientName'];
 	$pPhone = $_REQUEST['patientPhone'];
-	$page = $_REQUEST['patientAge'];
+	$pAge = $_REQUEST['patientAge'];
 	
 	$result =mysql_query("SELECT 1 FROM `registeration` WHERE `date` = '". $date ."' AND `time` = '". $time ."' AND `Doctor` = '". $doctor ."'");
 	if ($result && mysql_num_rows($result) > 0)
