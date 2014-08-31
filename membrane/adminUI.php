@@ -18,7 +18,7 @@
             </div>
             
             <div id="membership">
-            	<span><p><a href="includes/admin_logout.php">Log out</a></p></span>
+            	<span><p><a href="admin_logout.php">Log out</a></p></span>
             </div>
     	</div>
     	<div id="sidebar">

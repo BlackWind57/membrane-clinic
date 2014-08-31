@@ -4,7 +4,7 @@
 <link href="adminStyle.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="hoverScripts.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Register Admin</title>
+<title>Admin List</title>
 </head>
 
 <body>
@@ -27,26 +27,44 @@
             	<a href="userlist.php">User list</a> <br />
                 <a href="appointmentlist.php">Appointment list</a> <br />
                 <a href="adminlist.php">Admin list</a><br />
-            	<a href="adminregister.php">Register Admin</a>
-            </p
-        ></div>
+                <a href="adminregister.php">Register Admin</a>
+            </p>
+        </div>
         <div id="content">
-        <form action="admin_register.php" method="POST">
-           <table width="600">                                               
-                        <tr>
-                        <td><label>E-mail Address</label></td>
-                        <td>:</td>
-                        <td><input name="admin" /></td>
-                        </tr>
-                       
-                        <tr>
-                        <td><label>Password</label></td>
-                        <td>:</td>
-                        <td> <input name="pass" type="password"/></td>
-                        </tr>
-           	</table>
-         	<input type="submit" value="Register">
-            </form>
+       			<?php
+                    $con=mysqli_connect("localhost", "root", "","membrane");
+                    // Check connection 
+                    if (mysqli_connect_errno()) {
+                      echo "Failed to connect to Database: " . mysqli_connect_error();
+                    }
+                    
+                    $result = mysqli_query($con,"SELECT * FROM admin");
+                   
+                   echo "<table border='2' align='center'>
+					<tr>
+                    <th>admin ID</th>
+                    <th>admin name</th>              
+                    </tr>";
+                    
+                    while($row = mysqli_fetch_array($result))
+					{
+                      echo "<tr>";
+                      echo "<td>" . $row['id'] ."</td>";
+                      echo "<td>" . $row['username'] ."</td>";
+                      echo "</tr>";
+                    }
+                    
+                    echo "</table>";
+                    
+                    mysqli_close($con);
+    			?>
+               
+             	
+                <form name="input" action="deleteAdmin.php" method="get">
+                Admin Id<input type="number" name="idAdminrDel">
+            	<input type="submit" value="Delete User">
+            	</form> 
+        	
         </div>
         <div id="footer">
         	<span>
