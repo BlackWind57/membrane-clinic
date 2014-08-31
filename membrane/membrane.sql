@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 30, 2014 at 01:37 PM
+-- Generation Time: Aug 31, 2014 at 05:15 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -23,16 +23,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admins`
+-- Table structure for table `admin`
 --
 
-CREATE TABLE IF NOT EXISTS `admins` (
+CREATE TABLE IF NOT EXISTS `admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user` text NOT NULL,
-  `password` text NOT NULL,
-  `psalt` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `username` varchar(30) DEFAULT NULL,
+  `passcode` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `passcode`) VALUES
+(1, 'admin', 'admin'),
+(2, 'testing', 'testing'),
+(3, 'testing2', 'testing'),
+(4, 'testing4', 'testin');
 
 -- --------------------------------------------------------
 
@@ -49,14 +59,17 @@ CREATE TABLE IF NOT EXISTS `appointment` (
   `patientphone` int(15) NOT NULL,
   `patientage` int(3) NOT NULL,
   PRIMARY KEY (`regId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `appointment`
 --
 
 INSERT INTO `appointment` (`regId`, `date`, `time`, `doctor`, `patientname`, `patientphone`, `patientage`) VALUES
-(1, '', '', '', '', 0, 0);
+(1, '', '', '', '', 0, 0),
+(2, '27/8/2014', '08:40-09:00', 'Dr.Toefu Wao,M.D.', 'john', 12345, 0),
+(3, '3/9/2014', '08:20-08:40', 'Dr.Toefu Wao,M.D.', 'john', 1234567, 24),
+(4, '3/9/2014', '08:20-08:40', 'Dr.Toefu Wao,M.D.', 'john', 1234567, 20);
 
 -- --------------------------------------------------------
 
